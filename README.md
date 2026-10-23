@@ -1,29 +1,17 @@
-# CS 360 Mobile Architect and Programming
+# CS 305 Portfolio
 
-## Inventory App
+## Artemis Financial
 
-This repository contains my completed Inventory App from CS 360. The application was developed in Android Studio using Java and demonstrates mobile UI design, persistent data storage, user authentication, inventory management, and SMS notifications.
+Artemis Financial is a financial consulting company that develops individualized financial plans for its customers, including savings, retirement, investments, and insurance. The company wanted to modernize its software while improving security for sensitive customer and financial information. The main goal of the project was to identify security weaknesses and then add secure communication and data verification features to the application.
 
-## Briefly summarize the requirements and goals of the app you developed. What user needs was this app designed to address?
+One area I did well was reviewing the application for security weaknesses and identifying where improvements were needed. I looked at areas such as cryptography, secure communications, dependency vulnerabilities, input handling, and application configuration. Secure coding is important because vulnerabilities can expose private information, interrupt services, and damage customer trust. For a company that handles financial information, software security helps protect both the company and its customers from unnecessary risk.
 
-The goal of my application was to create an inventory management system that could store and manage parts. Users needed to be able to create an account, log in, and view their inventory in one place. The finished application allows users to add, edit, and delete inventory items while keeping the information stored in a persistent database. It also includes optional SMS notifications when an item's quantity reaches zero.
+One of the more challenging parts of the vulnerability assessment was working with the dependency-check tool and determining which reported vulnerabilities were relevant. The tool can identify known vulnerabilities in third-party dependencies, but the results still need to be reviewed rather than automatically accepted. Learning how to interpret the report and distinguish actual vulnerabilities from false positives was useful because automated security tools still require human analysis.
 
-## What screens and features were necessary to support user needs and produce a user-centered UI for the app? How did your UI designs keep users in mind? Why were your designs successful?
+I increased the application's layers of security by adding SHA-256 checksum verification, configuring HTTPS, and creating a self-signed certificate and keystore for encrypted communication. I also used dependency scanning and manual code review as additional security layers. In future projects, I would continue using automated vulnerability scanners, CVE information, secure coding standards, documentation, and manual testing to determine which vulnerabilities are relevant and what mitigation techniques are appropriate.
 
-The application uses separate screens for logging in, creating an account, viewing inventory, adding or editing inventory items, and managing SMS notifications. I tried to keep the screens simple so the user could quickly understand what each one was for. Consistent buttons, headings, and navigation also made it easier to move through the application without needing instructions.
+To make certain the application remained functional, I compiled and ran the refactored application and tested the `/hash` endpoint through HTTPS. I verified that the application returned the expected SHA-256 checksum and that secure communication worked through `https://localhost:8443/hash`. After refactoring, I ran OWASP Dependency-Check again to review third-party dependencies and make certain that my changes had not introduced additional security problems. I also manually reviewed the new code for syntax, logic, and security issues.
 
-## How did you approach the process of coding your app? What techniques or strategies did you use? How could those techniques or strategies be applied in the future?
+Some of the tools and practices I used included Java, Spring Boot, Maven, Java Keytool, SHA-256, HTTPS, certificates, OWASP Dependency-Check, and manual code review. I also learned the importance of using current cryptographic algorithms, testing security changes after implementation, and reviewing automated scanner results instead of assuming every result is correct. These practices will be useful in future software development and security-related work.
 
-I approached the coding by breaking the application into smaller pieces instead of trying to make everything functional at once. I started with the database and account system, then worked on inventory operations and finally added SMS functionality. Building and testing one section at a time made problems easier to find, and I could use the same strategy on larger projects in the future.
-
-## How did you test to ensure your code was functional? Why is this process important, and what did it reveal?
-
-I tested the application throughout development using the Android Emulator. I tested valid and invalid logins, account creation, adding inventory, editing and deleting items, database persistence, navigation, and both allowing and denying SMS permission. Testing each path helped find problems that would not necessarily be obvious just from reading the code and confirmed that the application continued working when optional permissions were denied.
-
-## Consider the full app design and development process from initial planning to finalization. Where did you have to innovate to overcome a challenge?
-
-One challenge was taking the larger inventory system I originally designed and making sure the final application clearly demonstrated the required functionality. I simplified some parts of the design while keeping the main purpose of the inventory application intact. This allowed me to focus development on creating a reliable database, inventory interface, login system, and notification feature rather than adding unnecessary complexity.
-
-## In what specific component of your mobile app were you particularly successful in demonstrating your knowledge, skills, and experience?
-
-I think the inventory database was one of the strongest parts of the application. I used SQLite to persist both account and inventory information and implemented the ability to create, read, update, and delete inventory records. The inventory screen then displays that information in a grid and connects the database operations to the user interface, which brought together several of the skills I learned during the course.
+For future employers, I could show the completed Artemis Financial Practices for Secure Software Report as an example of my ability to analyze an existing application, implement security improvements, work with cryptographic tools, configure HTTPS, perform dependency scanning, and test software after refactoring. I could also discuss the code changes made to add checksum verification and secure communication as examples of applying secure development practices to an existing application.
